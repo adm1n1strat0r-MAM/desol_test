@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from 'cors';
 
 import authRoute from "./routes/auth.route.js";
+import carRoute from "./routes/car.route.js";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
+app.use("/api/cars", carRoute);
 
 app.use((err, req, res, next)=>{
   const errorStatus = err.status || 500;
