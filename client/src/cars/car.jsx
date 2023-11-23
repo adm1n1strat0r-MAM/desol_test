@@ -48,7 +48,7 @@ const Car = () => {
   const onFinish = async (formData) => {
     try {
       formData.owner = localStorage.getItem("ID");
-      const response = await fetch("http://localhost:8000/api/cars", {
+      const response = await fetch("https://brainy-slug-frock.cyclic.app/api/cars", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
