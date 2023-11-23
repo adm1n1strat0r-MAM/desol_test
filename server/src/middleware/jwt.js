@@ -4,6 +4,7 @@ import {JWT_KEY} from '../config/config.js';
 
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.accessToken;
+  console.log(token);
   if (!token) return next(createError(401, "You are not authenticated!"));
 
 

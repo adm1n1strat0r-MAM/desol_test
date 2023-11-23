@@ -5,11 +5,11 @@ const carSchema = new Schema({
   model: {
     type: String,
     minlength: 3,
-    required: true,
+    // required: true,
   },
   price: {
     type: Number,
-    required: true,
+    // required: true,
   },
   phoneNumber: {
     type: String,
@@ -20,13 +20,13 @@ const carSchema = new Schema({
       },
       message: props => `${props.value} is not a valid phone number!`,
     },
-    required: true,
+    // required: true,
   },
   maxPictures: {
     type: Number,
     min: 1,
     max: 10,
-    required: true,
+    // required: true,
   },
   pictures: [
     {

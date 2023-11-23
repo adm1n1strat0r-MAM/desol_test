@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Card, Typography, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
 const { Title } = Typography;
 
 const Login = () => {
   const [remember, setRemember] = useState(true);
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     try {
@@ -13,6 +16,8 @@ const Login = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          // Include the access token in the Authorization header if available
+          Authorization: `Bearer ${Cookies.get("accessToken") || ""}`,
         },
         body: JSON.stringify(values),
       });
@@ -30,6 +35,9 @@ const Login = () => {
         localStorage.setItem("ID", data.info._id);
         Cookies.set("accessToken", data.token, { expires: 7 }); // Expires in 7 days
       }
+
+      // Redirect to the next page
+      navigate("/car");
 
       // Perform any additional actions after successful login
     } catch (error) {
